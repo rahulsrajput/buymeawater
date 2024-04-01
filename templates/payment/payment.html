@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}Support{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h3 class="card-title mb-4">Confirm</h3>
+    
+    <p>You're supporting {{value}} bottle of water which is equal to {{amount}}</p>
+
+    <a href="{{payment_long}}" target="_blank" class="btn">Confirm</a>
+    <a href="{% url 'buymewater' %}" class="btn mt-3">Back</a>
+</div>
+{% endblock %}

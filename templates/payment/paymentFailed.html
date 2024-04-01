@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}Payment Failed{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h3 class="card-title mb-4">Failed</h3>
+    
+    <p>Payment failed try again</p>
+
+    <a href="{% url 'buymewater' %}" class="btn mt-3">Support Again</a>
+    <a href="{% url 'supporthistory' %}" class="btn mt-3">Support History</a>
+</div>
+{% endblock %}

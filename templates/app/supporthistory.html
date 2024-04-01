@@ -1,0 +1,65 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}History{% endblock %}
+
+{% block content %}
+<div>
+    <div class="mt-5">
+        <span class="text-grey">Total Support</span>
+        <h1 class="text-white">₹ {{total_amount}}</h1>
+    </div>
+
+
+    <div class="row mt-5">
+        <div class="col-lg-6">
+            <h2 style="color: #ffffff;">History</h2>
+        </div>
+        <div class="col-lg-6">
+
+            <form action="" method="get">
+                <!-- {% csrf_token %} -->
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control rounded-5 border-0" placeholder="Search for ID"
+                        aria-label="Search for ID" aria-describedby="button-search" name="order-id">
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+
+    <div class="table-responsive rounded-5">
+        <table class="table table-dark table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Order id</th>
+                    <th scope="col">Payment id</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Date</th>
+                    <th scope="col"></th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                {% for obj in objs %}
+                <tr>
+                    <th scope="row">{{obj.order_id}}</th>
+                    <td>{{obj.payment_id}}</td>
+                    <td>₹{{obj.amount}}</td>
+                    <td colspan="2">{{obj.updated_at}}</td>
+                    
+                    {% if obj.status == 'Credit' %}
+                    <td><span class="badge badge-success rounded-pill d-inline">Complete</span></td>
+                    {% else %}
+                    <td><span class="badge badge-warning rounded-pill d-inline">Pending</span></td>
+                    {% endif %}
+
+                </tr>
+                {% endfor %}
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

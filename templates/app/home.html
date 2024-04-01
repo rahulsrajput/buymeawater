@@ -1,0 +1,141 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}BuyMeWater{% endblock %}
+
+{% block content %}
+<style>
+    .typing-animation {
+        overflow: hidden;
+        border-right: .15em solid orange;
+        /* The typwriter cursor */
+        white-space: nowrap;
+        /* Keeps the content on a single line */
+        margin: 0 auto;
+        /* Gives that scrolling effect as the typing happens */
+        animation: typing 2s steps(40, end), blink-caret .75s step-end infinite;
+    }
+
+    @keyframes typing {
+        from {
+            width: 0
+        }
+
+        to {
+            width: 100%
+        }
+    }
+
+    @keyframes blink-caret {
+
+        from,
+        to {
+            border-color: transparent
+        }
+
+        50% {
+            border-color: orange;
+        }
+    }
+
+    .row img {
+        margin-bottom: 20px;
+        height: 50px;
+    }
+</style>
+
+
+<div class="h-100 d-flex align-items-center justify-content-center mt-5">
+    <div class="text-white" style="text-align: center;">
+        <h1>Hi {{request.user|capfirst}}</h1>
+        <div>
+            <div id="typing-text" class="typing-animation"></div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card">
+    <h3 class="card-title mb-4" style="text-align: left;">Buy <span style="color: blueviolet;">Rahul</span> a Water</h3>
+
+
+    <form action="{% url 'support' %}" method="post" novalidate>
+        {% csrf_token %}
+
+        <div class="rounded-1 justify-content-center align-items-center">
+            <div class="row mt-3">
+                
+                <div class="col-2 text-center" style="height: 50px;"> <!-- Added mx-auto class -->
+                    <img src="{% static 'images/water-glass.png' %}" alt="">
+                </div>
+                
+                <div class="col-2 text-center" style="height: 45px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="45" fill="currentColor" class="bi bi-x"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                    </svg>
+                </div>
+                
+                <div class="col mt-2" style="height: 40px;">
+                    <input type="number" name="value" height="45" id="inputField" oninput="handleInput(this.value)" value="1" min="1" style="text-align: center;">
+                </div>
+            </div>
+        </div>
+       
+
+        <div class="col mt-5">
+            <textarea class="form-control border-0 rounded-1" name="msg" rows="4" placeholder="Leave a message (optional)" style="background-color: #f3f0f0; resize:none;">Superchat</textarea>
+        </div>
+        
+        <button type="submit" class="btn btn-primary btn-block mt-4" id="output" >Support ₹20</button>
+    </form>
+</div>
+
+
+<script>
+    const textArray = ["User Login, User Logout, User Registration", "User Profile Update", "User Password Reset", "User Password Update", "User Account Delete"];
+    let textIndex = 0;
+    let charIndex = 0;
+    let typingText = document.getElementById("typing-text");
+
+    function type() {
+        if (charIndex < textArray[textIndex].length) {
+            typingText.textContent += textArray[textIndex].charAt(charIndex);
+            charIndex++;
+            setTimeout(type, 100);
+        } else {
+            setTimeout(erase, 1500);
+        }
+    }
+
+    function erase() {
+        if (charIndex > 0) {
+            typingText.textContent = textArray[textIndex].substring(0, charIndex - 1);
+            charIndex--;
+            setTimeout(erase, 50);
+        } else {
+            textIndex++;
+            if (textIndex >= textArray.length) {
+                textIndex = 0;
+            }
+            setTimeout(type, 1000);
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(type, 1000);
+    });
+
+    function handleInput(value) {
+        if (value < 1) {
+            value = 1; // Set value to 0 if negative number entered
+        }
+        value *= 20;
+
+        // Do something with the input value, for example, display it
+        document.getElementById("output").innerText = "Support ₹" + value;
+    }
+</script>
+
+{% endblock %}

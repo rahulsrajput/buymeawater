@@ -155,3 +155,6 @@ EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 API_KEY = os.environ.get("API_KEY")
 AUTH_TOKEN = os.environ.get("AUTH_TOKEN")
 SALT = os.environ.get("SALT")
+
+
+CSRF_TRUSTED_ORIGINS = ["*"] 

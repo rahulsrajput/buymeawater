@@ -34,7 +34,8 @@ def support(request):
                     amount=amount,
                     buyer_name=request.user,
                     email=email,
-                    redirect_url='http://127.0.0.1:8000/support-success',
+                    # redirect_url='http://127.0.0.1:8000/support-success',
+                    redirect_url='https://buymeawater.vercel.app/support-success',
                     send_email=True,
                 )
                 # print(response)

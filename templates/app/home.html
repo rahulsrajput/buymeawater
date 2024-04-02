@@ -65,11 +65,11 @@
         <div class="rounded-1 justify-content-center align-items-center">
             <div class="row mt-3">
                 
-                <div class="col-2 text-center" style="height: 50px;"> <!-- Added mx-auto class -->
-                    <img src="{% static 'images/water-glass.png' %}" alt="">
+                <div class="col-3 text-center mb-2 mb-md-0">
+                    <img src="{% static 'images/water-glass.png' %}" alt="" style="height: 50px;">
                 </div>
                 
-                <div class="col text-center" style="height: 45px;">
+                <div class="col-3 text-center mb-2 mb-md-0">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="45" fill="currentColor" class="bi bi-x"
                         viewBox="0 0 16 16">
                         <path
@@ -77,11 +77,14 @@
                     </svg>
                 </div>
                 
-                <div class="col mt-2" style="height: 40px;">
-                    <input type="number" name="value" height="45" id="inputField" oninput="handleInput(this.value)" value="1" min="1" style="text-align: center;">
+                <div class="col-6 mt-2 text-center mb-2 mb-md-0">
+                    <div class="input-container" style="max-width: 200px; margin: 0 auto;"> <!-- Added container with max-width -->
+                        <input type="number" name="value" id="inputField" oninput="handleInput(this.value)" value="1" min="1" style="text-align: center; width: 100%;">
+                    </div>
                 </div>
             </div>
         </div>
+        
        
 
         <div class="col mt-5">

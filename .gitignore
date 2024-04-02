@@ -1,3 +1,4 @@
 .env
 .venv/
 todo
+db.sqlite3

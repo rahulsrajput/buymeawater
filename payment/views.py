@@ -78,6 +78,9 @@ def supportSuccess(request):
             payment_obj = Payment.objects.get(order_id = payment_request_id)    
             
             if payment_status == 'Failed':
+                payment_obj.payment_id = payment_id
+                payment_obj.status = payment_status
+                payment_obj.save()
                 return render(request, 'payment/paymentFailed.html')
                 
             else:

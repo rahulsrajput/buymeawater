@@ -9,9 +9,12 @@ filelock==3.13.3
 idna==3.6
 instamojo-wrapper==1.2.0
 platformdirs==4.2.0
+psycopg==3.1.18
+psycopg2==2.9.9
 python-dotenv==1.0.1
 requests==2.31.0
 sqlparse==0.4.4
+typing_extensions==4.10.0
 tzdata==2024.1
 urllib3==2.2.1
 virtualenv==20.25.1

@@ -157,4 +157,4 @@ AUTH_TOKEN = os.environ.get("AUTH_TOKEN")
 SALT = os.environ.get("SALT")
 
 
-CSRF_TRUSTED_ORIGINS = ["*"] 
+CSRF_TRUSTED_ORIGINS = ["https://buymeawater.vercel.app/"] 
